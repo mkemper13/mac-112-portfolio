@@ -1,4 +1,5 @@
 # Introduction {.unnumbered}
 
 This is my online notebook for COMP/STAT112 course taken at [Macalester College](https://www.macalester.edu/).  Please, use the side bar on the left for navigation.
-hhhhhh
+
+Second day of class. We learned how to render and push the changes to github. Most people in class are very confused. 

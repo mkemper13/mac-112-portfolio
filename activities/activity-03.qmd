@@ -2,3 +2,26 @@
 title: "Activity 03"
 ---
 
+```{r}
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+```
+
+```{r}
+#Exercise 1
+# a) bar graph
+# b) histogram or continuous plot
+```
+
+```{r}
+# Exercise 2
+ggplot(hikes, aes(x = rating))
+# error message says cannot find ggplot...this is because I didn't load the packages in this file.
+```
+```{r}
+library(tidyverse)
+```
+```{r}
+# Exercise 3
+ggplot(hikes, aes(x = rating))
+```
+

@@ -1,0 +1,128 @@
+---
+title: "activity-04.qmd"
+format: html
+editor: visual
+---
+
+## 4 Bivariate Viz
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+```
+
+```{r}
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+# Check it out
+head(elections)
+```
+
+```{r}
+#Exercise 0
+#Part a 43%
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar()
+```
+
+```{r}
+#Part b
+ggplot(elections, aes(x = repub_pct_20)) +
+  geom_histogram()
+```
+
+```{r}
+#Exercise 1
+ggplot(elections, aes(x = repub_pct_16, y = repub_pct_20)) +
+  geom_point()
+```
+
+```{r}
+#Exercise 2 
+ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
+ geom_point()
+
+```
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point()
+```
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(shape = 3)
+```
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16, colour = "blue")) +
+  geom_point()
+```
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_text(aes(label = state_abbr))
+```
+
+```{r}
+#Exercise 3
+#Republican suppport in 2020 and in 2016 appear to have a strong positive relationship. It seems as if Texas tends to deviate from this trend. 
+```
+
+```{r}
+#Exercise 4
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth()
+```
+
+```{r}
+#a)
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_smooth()
+```
+
+```{r}
+#b)
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+```
+
+```{r}
+#Exercise 5
+ggplot(elections, aes(y = median_rent, x = repub_pct_20)) +
+  geom_point()
+
+#This seems to have a slight negative relationship
+```
+
+```{r}
+ggplot(elections, aes(y = median_age, x = repub_pct_20)) +
+  geom_point()
+
+#This seems to have a very small positve relationship
+```
+
+```{r}
+#Exercise 6
+#This doesn't give a clear picture of how the voter support in 2020 is related to historical votership. You can't really see count very well.
+
+```
+
+```{r}
+#Exercise 7
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_violin()
+
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_boxplot()
+```
+
+```{r}
+
+```

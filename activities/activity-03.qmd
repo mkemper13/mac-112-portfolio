@@ -1,6 +1,10 @@
 ---
 title: "Activity 03"
 ---
+```{r}
+library(tidyverse)
+```
+
 
 ```{r}
 hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
@@ -23,5 +27,55 @@ library(tidyverse)
 ```{r}
 # Exercise 3
 ggplot(hikes, aes(x = rating))
+```
+
+```{r}
+#Exercise 4
+# COMMENT on the change in the code and the corresponding change in the plot
+ggplot(hikes, aes(x = rating)) +
+  geom_bar()
+```
+```{r}
+# This one labels the x and y axis instead of the generic labels. 
+ggplot(hikes, aes(x = rating)) +
+  geom_bar() +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+```{r}
+# Bars are colored blue
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+```{r}
+# Orange outline around the bars
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+```{r}
+# Background is white instead of gray
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue")  +
+  labs(x = "Rating", y = "Number of hikes") +
+  theme_minimal()
+```
+
+```{r}
+# Exercise 5
+
+#Part a
+#The '+' is for adding new variables to the plot, for when we need to add "layers".
+#Geom is probably short for geometry, so it knows to add a rectangular bar. 
+#Labs is to label the axis'
+#Color is the outline of the bar and fill is to fill in the color. 
+
+#Part b
+#From the bar chart we learned the number of hikes for each rating, easy,moderate, and difficult. 
+
+#Part c
+# I don't like the order of the ratings on the x-axis. 
 ```
 

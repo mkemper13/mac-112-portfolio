@@ -6,3 +6,6 @@ Second day of class. We learned how to render and push the changes to github. Mo
 
 9/10
 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form. 
+
+9/16:
+Good reminder from this morning's class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.

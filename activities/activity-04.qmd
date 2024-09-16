@@ -124,5 +124,11 @@ ggplot(elections, aes(y = repub_pct_20, x = historical)) +
 ```
 
 ```{r}
+#Red states have a higher median than both blue and purple states for republican votership in 2020. Red states also have the most outliers between the three. 
+```
 
+```{r}
+#Exercise 8 
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density()
 ```

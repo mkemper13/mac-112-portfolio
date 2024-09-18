@@ -9,3 +9,6 @@ Just finished Homework 1 and got it submitted to GitHub. Finally think I got it 
 
 9/16:
 Good reminder from this morning's class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.
+
+9/18:
+Just finished with Homework 2! Feeling pretty good about data visualization and creating plots. 

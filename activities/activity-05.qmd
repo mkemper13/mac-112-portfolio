@@ -1,0 +1,82 @@
+5 Multivariate Viz
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+education <- read.csv("https://mac-stat.github.io/data/sat.csv")
+head(education)
+```
+```{r}
+#Exercise 1
+#part a)
+ggplot(education, aes(x = sat)) +
+  geom_histogram()
+```
+
+```{r}
+#part b) Sat scores range from roughly below 900 to 1100. It appears that a lot of people have scored in the 900 range and then again from 1000-1100. This shape in non-normal with a big gap between 900 and 1000. 
+
+```
+
+```{r}
+#Exercise 2
+#part a)
+ggplot(education, aes(y = expend, x = sat)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+```
+```{r}
+ggplot(education, aes(y = salary, x = sat)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+```{r}
+#part b)
+#Expend and sat scores seem to have a negative relationship, as sat scores increase, expenditures seem to go down. This surprises me. I was thinking it would be the opposite. 
+```
+
+```{r}
+#Exercise 3
+ggplot(education, aes(y = sat, x = salary, color = expend)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+```{r}
+#Exercise 4
+ggplot(education, aes(y = sat, x = salary, color = cut(expend, 3))) + 
+  geom_point() + 
+  geom_smooth(se = FALSE, method = "lm")
+```
+States with lower salaries and expenditures tend to have higher SAT scores.
+
+```{r}
+#Exercise 5
+#Part a
+ggplot(education, aes(x = fracCat)) + 
+  geom_bar()
+```
+```{r}
+#Part b
+ggplot(education, aes(x = sat, fill = fracCat)) + 
+  geom_density(alpha = 0.5)
+```
+
+The more students in a state that take the SAT, the lower the average scores tend to be. This is probably related to self-selection.
+
+```{r}
+#Part c
+ggplot(education, aes(y = sat, x = expend, color = fracCat)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+```
+When we control for the fraction of students that take the SAT, SAT scores increase with expenditure.
+
+
+Part d
+Student participation tends to be lower among states with lower expenditures (which are likely also the states with higher ed institutions that haven’t historically required the SAT). Those same states tend to have higher SAT scores because of the self-selection of who participates.
+
+

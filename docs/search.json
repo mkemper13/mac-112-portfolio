@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "COMP/STAT112 Notebook",
     "section": "",
-    "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.\n9/16: Good reminder from this morning’s class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.\n9/18: Just finished with Homework 2! Feeling pretty good about data visualization and creating plots.",
+    "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.\n9/16: Good reminder from this morning’s class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.\n9/18: Just finished with Homework 2! Feeling pretty good about data visualization and creating plots.\n9/20: Working on in-class activity but I got this error message: “Downloading GitHub repo ropensci/rnaturalearthhires@HEAD” I think I have finally got the naturalearth package to load and then we ran out of time. I got all the way to exercise 6. About to go fill out the central form for this.",
     "crumbs": [
       "Introduction"
     ]
@@ -53,6 +53,28 @@
     ]
   },
   {
+    "objectID": "activities/activity-06.html",
+    "href": "activities/activity-06.html",
+    "title": "6  Part 1: Interactive points on a map with leaflet",
+    "section": "",
+    "text": "Exercise 1: A leaflet with markers / points\nEarlier this semester, I asked for the latitude and longitude of one of your favorite places. I rounded these to the nearest whole number, so that they’re near to but not exactly at those places. Let’s load the data and map it!\nfave_places &lt;- read.csv(\"https://ajohns24.github.io/data/112/our_fave_places.csv\")\n\n# Check it out\nhead(fave_places)\n\n  latitude longitude\n1       46      -123\n2       33        52\n3       48       -90\n4       36      -112\n5       59        25\n6       39      -106",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Part 1: Interactive points on a map with `leaflet`</span>"
+    ]
+  },
+  {
+    "objectID": "activities/activity-06.html#solutions",
+    "href": "activities/activity-06.html#solutions",
+    "title": "6  Part 1: Interactive points on a map with leaflet",
+    "section": "6.1 Solutions",
+    "text": "6.1 Solutions",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Part 1: Interactive points on a map with `leaflet`</span>"
+    ]
+  },
+  {
     "objectID": "notes/README.html",
     "href": "notes/README.html",
     "title": "Notes",
@@ -65,12 +87,12 @@
   {
     "objectID": "notes/note-01.html",
     "href": "notes/note-01.html",
-    "title": "6  Note 01",
+    "title": "7  Note 01",
     "section": "",
     "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.",
     "crumbs": [
       "Notes",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Note 01</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Note 01</span>"
     ]
   }
 ]

@@ -12,3 +12,6 @@ Good reminder from this morning's class: Box plots are constructed from five num
 
 9/18:
 Just finished with Homework 2! Feeling pretty good about data visualization and creating plots. 
+
+9/20:
+Working on in-class activity but I got this error message: "Downloading GitHub repo ropensci/rnaturalearthhires@HEAD" I think I have finally got the naturalearth package to load and then we ran out of time. I got all the way to exercise 6. About to go fill out the central form for this. 

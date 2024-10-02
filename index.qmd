@@ -15,3 +15,16 @@ Just finished with Homework 2! Feeling pretty good about data visualization and 
 
 9/20:
 Working on in-class activity but I got this error message: "Downloading GitHub repo ropensci/rnaturalearthhires@HEAD" I think I have finally got the naturalearth package to load and then we ran out of time. I got all the way to exercise 6. About to go fill out the central form for this. 
+
+10/1:
+Notes from Data Wrangling section:
+
+The goals of Unit 2 are to explore how to:
+
+Get data into the tidy shape / format we need for analysis. For example, we might want to:
+keep only certain observations
+define new variables
+reformat or “clean” existing variables
+combine various datasets
+process “string” or text data
+Numerically (not just visually) explore and summarize various characteristics of the variables in our dataset.

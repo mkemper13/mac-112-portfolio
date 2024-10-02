@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "COMP/STAT112 Notebook",
     "section": "",
-    "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.\n9/16: Good reminder from this morning’s class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.\n9/18: Just finished with Homework 2! Feeling pretty good about data visualization and creating plots.\n9/20: Working on in-class activity but I got this error message: “Downloading GitHub repo ropensci/rnaturalearthhires@HEAD” I think I have finally got the naturalearth package to load and then we ran out of time. I got all the way to exercise 6. About to go fill out the central form for this.",
+    "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.\n9/16: Good reminder from this morning’s class: Box plots are constructed from five numbers - the minimum, 25th percentile, median, 75th percentile, and maximum value of a quantitative variable.\n9/18: Just finished with Homework 2! Feeling pretty good about data visualization and creating plots.\n9/20: Working on in-class activity but I got this error message: “Downloading GitHub repo ropensci/rnaturalearthhires@HEAD” I think I have finally got the naturalearth package to load and then we ran out of time. I got all the way to exercise 6. About to go fill out the central form for this.\n10/1: Notes from Data Wrangling section:\nThe goals of Unit 2 are to explore how to:\nGet data into the tidy shape / format we need for analysis. For example, we might want to: keep only certain observations define new variables reformat or “clean” existing variables combine various datasets process “string” or text data Numerically (not just visually) explore and summarize various characteristics of the variables in our dataset.",
     "crumbs": [
       "Introduction"
     ]
@@ -75,6 +75,28 @@
     ]
   },
   {
+    "objectID": "activities/activity-07.html",
+    "href": "activities/activity-07.html",
+    "title": "7  Activity 7",
+    "section": "",
+    "text": "Exercise 1: Professionalism\nLet’s examine weather in 3 Australian locations.\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nThe following plot is fine for things like homework or just playing around. But we’ll make it more “professional” looking below.\nggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + \n  geom_point()\n\nWarning: Removed 27 rows containing missing values or values outside the scale range\n(`geom_point()`).",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Activity 7</span>"
+    ]
+  },
+  {
+    "objectID": "activities/activity-07.html#footnotes",
+    "href": "activities/activity-07.html#footnotes",
+    "title": "7  Activity 7",
+    "section": "",
+    "text": "https://en.wikipedia.org/wiki/W._E._B._Du_Bois↩︎\nB. S. Baumer, D. T. Kaplan, and N. J. Horton, Modern Data Science with R, 2017, p. 15.↩︎",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Activity 7</span>"
+    ]
+  },
+  {
     "objectID": "notes/README.html",
     "href": "notes/README.html",
     "title": "Notes",
@@ -87,12 +109,12 @@
   {
     "objectID": "notes/note-01.html",
     "href": "notes/note-01.html",
-    "title": "7  Note 01",
+    "title": "8  Note 01",
     "section": "",
     "text": "Introduction\nThis is my online notebook for COMP/STAT112 course taken at Macalester College. Please, use the side bar on the left for navigation.\nSecond day of class. We learned how to render and push the changes to github. Most people in class are very confused.\n9/10 Just finished Homework 1 and got it submitted to GitHub. Finally think I got it to work. I am now going to do the reading for class tomorrow and then fill out the survey on the central form.",
     "crumbs": [
       "Notes",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Note 01</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Note 01</span>"
     ]
   }
 ]

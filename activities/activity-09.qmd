@@ -1,0 +1,345 @@
+```{r}
+library(tidyverse)
+penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
+
+```
+
+
+### Exercise 1: More Filtering {.unnumbered}
+
+Recall the "logical comparison operators" we can use to `filter()` our data:
+
+| symbol           | meaning                   |
+|:-----------------|:--------------------------|
+| `==`               | equal to                  |
+| `!=`               | not equal to              |
+| `>`               | greater than              |
+| `>=`              | greater than or equal to  |
+| `<`               | less than                 |
+| `<=`              | less than or equal to     |
+| `%in% c(***, ***)` | a list of multiple values |
+
+#### Part a {.unnumbered}
+
+::: {.callout-tip title="Commenting/Uncommenting Code"}
+
+To comment/uncomment several lines of code at once, highlight them then click <kbd>ctrl/cmd</kbd>+<kbd>shift</kbd>+<kbd>c</kbd>.
+
+:::
+
+```{r}
+# Create a dataset with just Adelie and Chinstrap using %in%
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |> 
+  filter(species %in% c("Adelie", "Chinstrap")) |> 
+  count(species)
+```
+
+```{r}
+# Create a dataset with just Adelie and Chinstrap using !=
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |> 
+  filter(species!="Gentoo") |> 
+  count(species)
+```
+
+#### Part b {.unnumbered}
+
+Notice that some of our penguins have missing (`NA`) data on some values:
+
+```{r}
+head(penguins)
+```
+
+::: {.callout-tip title="Handeling `NA` Values"}
+
+There are many ways to handle missing data. The right approach depends upon your research goals. A general rule is: Only get rid of observations with missing data if they're missing data on variables you *need* for the specific task at hand!
+
+:::
+
+**Example 1**
+
+Suppose our research focus is *just* on `body_mass_g`. Two penguins are missing this info:
+
+```{r}
+# NOTE the use of is.na()
+penguins |> 
+  summarize(sum(is.na(body_mass_g)))
+```
+
+Let's define a new dataset that removes these penguins:
+
+```{r}
+# NOTE the use of is.na()
+penguins_w_body_mass <- penguins |> 
+  filter(!is.na(body_mass_g))
+
+# Compare the number of penguins in this vs the original data
+nrow(penguins_w_body_mass)
+nrow(penguins)
+```
+
+Note that some penguins in `penguins_w_body_mass` are missing info on `sex`, but we don't care since that's not related to our research question:
+
+```{r}
+penguins_w_body_mass |> 
+  summarize(sum(is.na(sex)))
+```
+
+**Example 2**
+
+In the *very rare case* that we need complete information on every variable for the specific task at hand, we can use `na.omit()` to get rid of *any* penguin that's missing info on *any* variable:
+
+```{r}
+penguins_complete <- penguins |> 
+  na.omit()
+```
+
+How many penguins did this eliminate?
+
+this removed 11 penguins
+```{r}
+nrow(penguins_complete)
+nrow(penguins)
+```
+
+#### Part c {.unnumbered}
+
+Explain why we should only use `na.omit()` in extreme circumstances.
+
+\
+\
+\
+\
+
+### Exercise 2: More Selecting {.unnumbered}
+
+Being able to `select()` only certain columns can help simplify our data. This is especially important when we're working with *lots* of columns (which we haven't done yet). It can also get tedious to type out every column of interest. Here are some shortcuts:
+
+-   `-` *removes* a given variable and keeps all others (e.g. `select(-island)`)
+-   `starts_with("___")`, `ends_with("___")`, or `contains("___")` selects only the columns that either start with, end with, or simply contain the given string of characters
+
+Use these *shortcuts* to create the following datasets.
+
+```{r}
+# First: recall the variable names
+names(penguins)
+```
+
+```{r}
+# Use a shortcut to keep everything but the year and island variables
+penguins %>%
+  select(-year, - island) 
+
+```
+
+```{r}
+# Use a shortcut to keep only species and the penguin characteristics measured in mm
+penguins%>%
+  select(species,ends_with("mm"))
+
+```
+
+```{r}
+# Use a shortcut to keep only species and bill-related measurements
+penguins |>
+  select(species, starts_with("bill"))
+
+```
+
+```{r}
+# Use a shortcut to keep only species and the length-related characteristics
+penguins|>
+  select(species, contains("length"))
+
+```
+
+\
+\
+\
+\
+
+### Exercise 3: Arranging, Counting, & Grouping by Multiple Variables {.unnumbered}
+
+We've done examples where we need to `filter()` by more than one variable, or `select()` more than one variable. Use your intuition for how we can `arrange()`, `count()`, and `group_by()` more than one variable.
+
+```{r}
+# Change this code to sort the penguins by species, and then island name
+# NOTE: The first row should be an Adelie penguin living on Biscoe island
+penguins |> 
+  arrange(species)%>%
+  arrange(island)
+
+```
+
+```{r}
+# Change this code to count the number of male/female penguins observed for each species
+penguins |> 
+  count(species, sex)
+
+```
+
+```{r}
+# Change this code to calculate the average body mass by species and sex
+penguins |> 
+  group_by(species, sex) |> 
+  summarize(mean = mean(body_mass_g, na.rm = TRUE))
+
+```
+
+\
+\
+\
+\
+
+### Exercise 4: Dates {.unnumbered}
+
+Before some wrangling practice, let's explore another important concept: working with or mutating *date* variables. Dates are a whole special object type or class in R that automatically respect the order of time.
+
+```{r}
+# Get today's date
+as.Date(today())
+
+# Let's store this as "today" so we can work with it below
+today <- as.Date(today())
+
+# Check out the class of this object
+class(today)
+```
+
+The `lubridate` package inside `tidyverse` contains functions that can extract various information from dates. Let's learn about some of the most common functions by applying them to `today`. For each, make a comment on what the function does
+
+```{r}
+year(today)
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+month(today)
+month(today, label = TRUE)
+```
+
+```{r}
+# What does this number mean?
+week(today)
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+mday(today)
+yday(today)  # This is often called the "Julian day"
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+wday(today)
+wday(today, label = TRUE)
+```
+
+```{r}
+# What do the results of these 2 lines tell us?
+today >= ymd("2024-02-14")
+today < ymd("2024-02-14")
+```
+
+\
+\
+\
+\
+
+## Exercises Part 2: Application
+
+The remaining exercises are *similar* to some of those on the homework.  Hence, the solutions are not provided. Let's apply these ideas to the daily `Birthdays` dataset in the `mosaic` package.
+
+```{r}
+library(mosaic)
+data("Birthdays")
+head(Birthdays)
+```
+
+`Birthdays` gives the number of births recorded on each day of the year in each state from 1969 to 1988^[The `fivethirtyeight` package has more recent data.]. We can use our wrangling skills to understand some drivers of daily births. Putting these all together can be challenging! Remember the following ways to make tasks more manageable:
+
+-   Translate the prompt into our 6 verbs (and `count()`). That is, think before you type.
+-   Build your code line by line. It's important to understand what's being piped into each function!
+
+
+
+
+
+### Exercise 5: Warming up {.unnumbered}
+
+```{r}
+# How many days of data do we have for each state?
+
+
+# How many total births were there in this time period?
+
+
+# How many total births were there per state in this time period, sorted from low to high?
+
+
+```
+
+
+
+### Exercise 6: Homework Reprise {.unnumbered}
+
+Create a new dataset named `daily_births` that includes the total number of births per day (across all states) and the corresponding day of the week, eg, Mon. NOTE: Name the column with total births so that it's easier to wrangle and plot.
+
+```{r}
+```
+
+Using this data, construct a plot of `births` over time, indicating the day of week.
+
+```{r}
+```
+
+
+
+### Exercise 7: Wrangle & Plot {.unnumbered}
+
+For each prompt below, you can decide whether you want to: (1) wrangle and store data, then plot; or (2) wrangle data and pipe directly into ggplot. For example:
+
+```{r}
+penguins |> 
+  filter(species != "Gentoo") |> 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
+    geom_point()
+```
+
+#### Part a {.unnumbered}
+
+Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1969, .... Label month by names not numbers, eg, Jan not 1. Then, plot the births by month and comment on what you learn.
+
+```{r}
+```
+
+#### Part b {.unnumbered}
+
+In 1988, calculate the total number of births per week in each state. Get rid of week "53", which isn't a complete week! Then, make a line plot of births by week for each state and comment on what you learn. For example, do you notice any seasonal trends? Are these the same in every state? Any outliers?
+
+```{r}
+```
+
+#### Part c {.unnumbered}
+
+Repeat the above for just Minnesota (MN) and Louisiana (LA). MN has one of the coldest climates and LA has one of the warmest. How do their seasonal trends compare? Do you think these trends are similar in other colder and warmer states? Try it!
+
+```{r}
+```
+
+
+
+### Exercise 8: More Practice {.unnumbered}
+
+#### Part a {.unnumbered}
+
+Create a dataset with only births in Massachusetts (MA) in 1979 and sort the days from those with the most births to those with the fewest.
+
+```{r}
+```
+
+#### Part b {.unnumbered}
+
+Make a table showing the five states with the most births between September 9, 1979 and September 12, 1979, including the 9th and 12th. Arrange the table in descending order of births.
+

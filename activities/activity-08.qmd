@@ -6,6 +6,10 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 ```
 
 
+```{r}
+```
+
+
 ### Exercise 1: select practice {-}
 
 6 verbs: `select`, `filter`, `arrange`, `mutate`, `summarize`, `group_by`
@@ -356,31 +360,31 @@ Let's talk about the last 2 verbs. `summarize()` (or equivalently `summarise()`)
 Finally, `group_by()` groups the units of observation or rows of a data frame by a specified set of variables. Alone, this function doesn't change the appearance of our dataset or seem to do anything at all:
 
 ```{r}
-# elections_small |> 
-#   group_by(state_name) |> 
-#   head()
+ elections_small |> 
+   group_by(state_name) |> 
+   head()
 ```
 
 Though it does change the underlying structure of the dataset:
 
 ```{r}
-# Check out the structure before and after group_by
-# elections_small |> 
-#   class()
+ #Check out the structure before and after group_by
+ elections_small |> 
+   class()
 # 
-# elections_small |> 
-#   group_by(state_name) |> 
-#   class()
+ elections_small |> 
+   group_by(state_name) |> 
+   class()
 ```
 
 Where it really shines is in partnership with `summarize()`.
 
 ```{r}
-# What does this do?
-# (What if we didn't use group_by?)
-# elections_small |> 
-#   group_by(state_name) |> 
-#   summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20)) 
+ #What does this do?
+ #(What if we didn't use group_by?)
+ elections_small |> 
+   group_by(state_name) |> 
+   summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20)) 
 ```
 
 ::: {.callout-warning title="Reflect"}

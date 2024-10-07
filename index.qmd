@@ -28,3 +28,12 @@ reformat or “clean” existing variables
 combine various datasets
 process “string” or text data
 Numerically (not just visually) explore and summarize various characteristics of the variables in our dataset.
+
+
+10/6:
+
+Notes from reading chapter 10 on how to group by proportions
+penguin_avg <- penguins |> 
+  group_by(species, sex) |> 
+  summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE)) |> 
+  na.omit()

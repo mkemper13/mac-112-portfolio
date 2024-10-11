@@ -217,6 +217,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Exercise 1: More Filtering</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./activities/activity-10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercises</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -231,13 +237,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notes/note-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Note 01</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Note 01</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./notes/note-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Note 02</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Note 02</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,6 +309,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Get data into the tidy shape / format we need for analysis. For example, we might want to: keep only certain observations define new variables reformat or “clean” existing variables combine various datasets process “string” or text data Numerically (not just visually) explore and summarize various characteristics of the variables in our dataset.</p>
 <p>10/6:</p>
 <p>Notes from reading chapter 10 on how to group by proportions penguin_avg &lt;- penguins |&gt; group_by(species, sex) |&gt; summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE)) |&gt; na.omit()</p>
+<p>10/7:</p>
+<p>Mutate code for changing variable type:</p>
+<p>Subject is an integer and day is a character. We want them to be categorical (factor) and numeric, respectively.</p>
+<p>mutate(Subject = as.factor(Subject), day = as.numeric(day))</p>
 
 
 <!-- -->
@@ -817,7 +827,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-36"><a href="#cb1-36"></a>penguin_avg &lt;- penguins |&gt; </span>
 <span id="cb1-37"><a href="#cb1-37"></a>  group_by(species, sex) |&gt; </span>
 <span id="cb1-38"><a href="#cb1-38"></a>  summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE)) |&gt; </span>
-<span id="cb1-39"><a href="#cb1-39"></a>  na.omit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-39"><a href="#cb1-39"></a>  na.omit()</span>
+<span id="cb1-40"><a href="#cb1-40"></a></span>
+<span id="cb1-41"><a href="#cb1-41"></a>10/7:</span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a>Mutate code for changing variable type:</span>
+<span id="cb1-44"><a href="#cb1-44"></a></span>
+<span id="cb1-45"><a href="#cb1-45"></a>Subject is an integer and day is a character. We want them to be categorical (factor) and numeric, respectively.</span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a>mutate(Subject = as.factor(Subject), day = as.numeric(day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

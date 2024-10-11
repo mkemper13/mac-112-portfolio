@@ -37,3 +37,12 @@ penguin_avg <- penguins |>
   group_by(species, sex) |> 
   summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE)) |> 
   na.omit()
+
+10/7:
+
+Mutate code for changing variable type:
+
+Subject is an integer and day is a character. We want them to be categorical (factor) and numeric, respectively.
+
+mutate(Subject = as.factor(Subject), day = as.numeric(day))
+

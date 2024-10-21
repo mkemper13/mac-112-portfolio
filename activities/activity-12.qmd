@@ -1,0 +1,83 @@
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+
+## Exercises
+
+The exercises revisit our `grades` data:
+
+```{r echo = FALSE}
+# Get rid of some duplicate rows!
+grades <- read.csv("https://mac-stat.github.io/data/grades.csv") |> 
+  distinct(sid, sessionID, .keep_all = TRUE)
+
+# Check it out
+head(grades)
+```
+
+We'll explore the number of times each grade was assigned:
+
+```{r}
+grade_distribution <- grades |> 
+  count(grade)
+
+head(grade_distribution)
+```
+
+### Exercise 1: Changing the order (option 1) {.unnumbered}
+
+Check out a **column plot** of the number of times each grade was assigned during the study period. This is similar to a bar plot, but where we define the height of a bar according to variable in our dataset.
+
+```{r}
+grade_distribution |> 
+  ggplot(aes(x = grade, y = n)) +
+    geom_col()
+```
+
+The order of the grades is goofy! Construct a new column plot, manually reordering the grades from high (A) to low (NC) with "S" and "AU" at the end:
+
+```{r}
+ grade_distribution |>
+   mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |>
+   ggplot(aes(x = grade, y = n)) +
+     geom_col()
+```
+
+Construct a new column plot, reordering the grades in ascending frequency (i.e. how often the grades were assigned):
+
+```{r}
+ grade_distribution |>
+   mutate(grade = fct_reorder(grade, n)) |>
+   ggplot(aes(x = grade, y = n)) +
+    geom_col()
+```
+
+Construct a new column plot, reordering the grades in descending frequency (i.e. how often the grades were assigned):
+
+```{r}
+ grade_distribution |>
+   mutate(grade = fct_reorder(grade, n, .desc = TRUE)) |>
+   ggplot(aes(x = grade, y = n)) +
+     geom_col()
+```
+
+\
+\
+\
+\
+
+### Exercise 2: Changing factor level labels {.unnumbered}
+
+It may not be clear what "AU" and "S" stand for. Construct a new column plot that renames these levels "Audit" and "Satisfactory", while keeping the other grade labels the same *and* in a meaningful order:
+
+```{r}
+ grade_distribution |>
+   mutate(grade = fct_relevel(grade, c("A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "S", "AU"))) |>
+   mutate(grade = fct_recode(grade, "Audit" = "AU", "Satisfactory" = "S")) |>  # Multiple pieces go into the last 2 blanks
+   ggplot(aes(x = grade, y = n)) +
+     geom_col()
+```
